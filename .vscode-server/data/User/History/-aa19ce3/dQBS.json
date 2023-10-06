@@ -1,0 +1,12 @@
+{
+    "remote.SSH.remotePlatform": {
+        "programming2.postech.ac.kr": "linux",
+        "141.223.181.67": "linux",
+        "141.223.121.130": "linux"
+    },
+    "git.autofetch": true,
+    "files.exclude": {
+        "**/.git": false
+    },
+    "remote.SSH.configFile": "C:\\Users\\최성연\\.ssh\\config"
+}

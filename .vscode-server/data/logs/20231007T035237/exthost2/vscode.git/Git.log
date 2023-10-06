@@ -1,0 +1,197 @@
+2023-10-07 03:52:53.397 [info] Log level: Info
+2023-10-07 03:52:53.397 [info] Validating found git in: "git"
+2023-10-07 03:52:53.397 [info] Using git "2.34.1" from "git"
+2023-10-07 03:52:53.397 [info] > git rev-parse --show-toplevel [1ms]
+2023-10-07 03:52:53.397 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 03:52:53.397 [info] > git rev-parse --show-toplevel [0ms]
+2023-10-07 03:52:53.397 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 03:52:53.397 [info] > git rev-parse --show-toplevel [1ms]
+2023-10-07 03:52:53.397 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 03:52:53.397 [info] > git rev-parse --show-toplevel [1ms]
+2023-10-07 03:52:53.397 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 03:52:53.397 [info] > git rev-parse --show-toplevel [0ms]
+2023-10-07 03:52:53.397 [info] > git rev-parse --git-dir --git-common-dir [1ms]
+2023-10-07 03:52:53.406 [info] Open repository: /home/team32/.oh-my-zsh
+2023-10-07 03:52:53.412 [info] > git config --get commit.template [2ms]
+2023-10-07 03:52:53.412 [info] > git rev-parse --show-toplevel [1ms]
+2023-10-07 03:52:53.412 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 03:52:53.418 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [4ms]
+2023-10-07 03:52:53.421 [info] > git rev-parse --show-toplevel [3ms]
+2023-10-07 03:52:53.421 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 03:52:53.424 [info] > git rev-parse --show-toplevel [1ms]
+2023-10-07 03:52:53.424 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 03:52:53.441 [info] > git status -z -uall [20ms]
+2023-10-07 03:52:53.450 [info] > git config --get commit.template [3ms]
+2023-10-07 03:52:53.451 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:52:53.509 [info] > git status -z -uall [56ms]
+2023-10-07 03:52:53.921 [info] > git fetch [516ms]
+2023-10-07 03:52:53.928 [info] > git config --get commit.template [3ms]
+2023-10-07 03:52:53.929 [info] > git check-ignore -v -z --stdin [1ms]
+2023-10-07 03:52:53.933 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:52:53.956 [info] > git status -z -uall [21ms]
+2023-10-07 03:52:55.152 [info] > git config --get commit.template [3ms]
+2023-10-07 03:52:55.152 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:52:55.173 [info] > git status -z -uall [19ms]
+2023-10-07 03:53:06.857 [info] > git rev-parse --show-toplevel [1ms]
+2023-10-07 03:53:06.857 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 03:53:32.868 [info] > git config --get commit.template [3ms]
+2023-10-07 03:53:32.868 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:53:32.889 [info] > git status -z -uall [19ms]
+2023-10-07 03:55:54.487 [info] > git fetch [521ms]
+2023-10-07 03:55:54.492 [info] > git config --get commit.template [2ms]
+2023-10-07 03:55:54.493 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:55:54.514 [info] > git status -z -uall [19ms]
+2023-10-07 03:55:55.667 [info] > git config --get commit.template [3ms]
+2023-10-07 03:55:55.667 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:55:55.687 [info] > git status -z -uall [18ms]
+2023-10-07 03:58:07.297 [info] > git rev-parse --show-toplevel [0ms]
+2023-10-07 03:58:07.300 [info] > git rev-parse --git-dir --git-common-dir [0ms]
+2023-10-07 03:58:07.305 [info] Open repository: /home/team32/pintos
+2023-10-07 03:58:07.308 [info] > git fetch [3ms]
+2023-10-07 03:58:07.311 [info] > git config --get commit.template [3ms]
+2023-10-07 03:58:07.313 [info] No remotes found in the git config file.
+2023-10-07 03:58:07.314 [info] > git config --get commit.template [3ms]
+2023-10-07 03:58:07.314 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:58:07.318 [info] No remotes found in the git config file.
+2023-10-07 03:58:07.321 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [2ms]
+2023-10-07 03:58:07.321 [info] > git config --get commit.template [1ms]
+2023-10-07 03:58:07.323 [info] No remotes found in the git config file.
+2023-10-07 03:58:07.324 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:58:07.328 [info] > git status -z -uall [2ms]
+2023-10-07 03:58:07.741 [info] > git show --textconv :src/devices/timer.c [3ms]
+2023-10-07 03:58:07.741 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [1ms]
+2023-10-07 03:58:07.893 [info] > git check-ignore -v -z --stdin [3ms]
+2023-10-07 03:58:07.894 [info] > git check-ignore -v -z --stdin [1ms]
+2023-10-07 03:58:08.500 [info] No remotes found in the git config file.
+2023-10-07 03:58:08.503 [info] > git config --get commit.template [2ms]
+2023-10-07 03:58:08.503 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:58:08.506 [info] > git status -z -uall [1ms]
+2023-10-07 03:58:08.684 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [67ms]
+2023-10-07 03:58:08.744 [info] > git show --textconv :src/devices/timer.c [1ms]
+2023-10-07 03:58:19.201 [info] > git config --get commit.template [2ms]
+2023-10-07 03:58:19.203 [info] No remotes found in the git config file.
+2023-10-07 03:58:19.204 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [0ms]
+2023-10-07 03:58:19.208 [info] > git status -z -uall [2ms]
+2023-10-07 03:58:19.362 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [49ms]
+2023-10-07 03:58:19.366 [info] > git cat-file -s 8b923414e65248414512a63f5d27088ee3c3eb44 [1ms]
+2023-10-07 03:58:19.431 [info] > git show --textconv :src/devices/timer.c [1ms]
+2023-10-07 03:58:31.036 [info] No remotes found in the git config file.
+2023-10-07 03:58:31.036 [info] > git config --get commit.template [3ms]
+2023-10-07 03:58:31.036 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:58:31.040 [info] > git status -z -uall [2ms]
+2023-10-07 03:58:31.211 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [60ms]
+2023-10-07 03:58:31.215 [info] > git cat-file -s 8b923414e65248414512a63f5d27088ee3c3eb44 [1ms]
+2023-10-07 03:58:31.269 [info] > git show --textconv :src/devices/timer.c [1ms]
+2023-10-07 03:58:55.046 [info] > git fetch [523ms]
+2023-10-07 03:58:55.053 [info] > git config --get commit.template [3ms]
+2023-10-07 03:58:55.053 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:58:55.074 [info] > git status -z -uall [19ms]
+2023-10-07 03:58:56.172 [info] > git config --get commit.template [3ms]
+2023-10-07 03:58:56.172 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 03:58:56.193 [info] > git status -z -uall [18ms]
+2023-10-07 04:00:03.132 [info] > git rev-parse --show-toplevel [0ms]
+2023-10-07 04:00:03.132 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:00:12.936 [info] > git rev-parse --show-toplevel [0ms]
+2023-10-07 04:00:12.936 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:00:22.338 [info] No remotes found in the git config file.
+2023-10-07 04:00:22.339 [info] > git config --get commit.template [3ms]
+2023-10-07 04:00:22.339 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:00:22.343 [info] > git status -z -uall [2ms]
+2023-10-07 04:00:22.452 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [0ms]
+2023-10-07 04:00:22.455 [info] > git cat-file -s 8b923414e65248414512a63f5d27088ee3c3eb44 [0ms]
+2023-10-07 04:00:22.471 [info] > git show --textconv :src/devices/timer.c [1ms]
+2023-10-07 04:00:42.802 [info] > git config --get commit.template [9ms]
+2023-10-07 04:00:42.802 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:00:42.806 [info] > git status -z -uall [2ms]
+2023-10-07 04:00:42.902 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [1ms]
+2023-10-07 04:00:42.904 [info] > git cat-file -s 8b923414e65248414512a63f5d27088ee3c3eb44 [0ms]
+2023-10-07 04:00:42.922 [info] > git show --textconv :src/devices/timer.c [0ms]
+2023-10-07 04:01:07.331 [info] > git fetch [1ms]
+2023-10-07 04:01:07.336 [info] > git config --get commit.template [2ms]
+2023-10-07 04:01:07.337 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:01:07.341 [info] > git status -z -uall [2ms]
+2023-10-07 04:01:08.491 [info] > git config --get commit.template [3ms]
+2023-10-07 04:01:08.491 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:01:08.495 [info] > git status -z -uall [2ms]
+2023-10-07 04:01:08.602 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [0ms]
+2023-10-07 04:01:08.604 [info] > git cat-file -s 8b923414e65248414512a63f5d27088ee3c3eb44 [0ms]
+2023-10-07 04:01:08.620 [info] > git show --textconv :src/devices/timer.c [0ms]
+2023-10-07 04:02:02.815 [info] > git fetch [540ms]
+2023-10-07 04:02:02.821 [info] > git config --get commit.template [3ms]
+2023-10-07 04:02:02.821 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:02:02.843 [info] > git status -z -uall [20ms]
+2023-10-07 04:02:03.959 [info] > git config --get commit.template [13ms]
+2023-10-07 04:02:03.959 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:02:03.979 [info] > git status -z -uall [18ms]
+2023-10-07 04:08:40.405 [info] > git fetch [4ms]
+2023-10-07 04:08:40.413 [info] > git config --get commit.template [4ms]
+2023-10-07 04:08:40.413 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [0ms]
+2023-10-07 04:08:40.419 [info] > git status -z -uall [2ms]
+2023-10-07 04:08:40.904 [info] > git fetch [499ms]
+2023-10-07 04:08:40.908 [info] > git config --get commit.template [1ms]
+2023-10-07 04:08:40.911 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:08:40.932 [info] > git status -z -uall [19ms]
+2023-10-07 04:08:41.499 [info] > git config --get commit.template [2ms]
+2023-10-07 04:08:41.499 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:08:41.503 [info] > git status -z -uall [2ms]
+2023-10-07 04:08:42.080 [info] > git config --get commit.template [3ms]
+2023-10-07 04:08:42.080 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [0ms]
+2023-10-07 04:08:42.101 [info] > git status -z -uall [19ms]
+2023-10-07 04:08:42.190 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [0ms]
+2023-10-07 04:08:42.193 [info] > git cat-file -s 8b923414e65248414512a63f5d27088ee3c3eb44 [0ms]
+2023-10-07 04:08:42.206 [info] > git show --textconv :src/devices/timer.c [1ms]
+2023-10-07 04:08:54.716 [warning] ENOENT: no such file or directory, open '/home/team32/pintos/.git/HEAD'
+2023-10-07 04:08:54.719 [warning] getRemotes() - ENOENT: no such file or directory, open '/home/team32/pintos/.git/config'
+2023-10-07 04:08:54.721 [info] > git remote --verbose [2ms]
+2023-10-07 04:08:54.721 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:08:54.723 [info] > git symbolic-ref --short HEAD [7ms]
+2023-10-07 04:08:54.723 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:08:54.728 [warning] ENOENT: no such file or directory, open '/home/team32/pintos/.git/HEAD'
+2023-10-07 04:08:54.730 [warning] getRemotes() - ENOENT: no such file or directory, open '/home/team32/pintos/.git/config'
+2023-10-07 04:08:54.733 [info] > git config --get commit.template [12ms]
+2023-10-07 04:08:54.733 [info] > git config --get commit.template [1ms]
+2023-10-07 04:08:54.733 [info] > git remote --verbose [3ms]
+2023-10-07 04:08:54.733 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:08:54.733 [info] > git symbolic-ref --short HEAD [5ms]
+2023-10-07 04:08:54.733 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:08:54.736 [info] > git rev-parse HEAD [11ms]
+2023-10-07 04:08:54.736 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:08:54.736 [info] > git rev-parse HEAD [0ms]
+2023-10-07 04:08:54.736 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:08:55.372 [info] > git check-ignore -v -z --stdin [1ms]
+2023-10-07 04:10:39.432 [info] > git rev-parse --show-toplevel [1ms]
+2023-10-07 04:10:39.432 [info] fatal: not a git repository (or any of the parent directories): .git
+2023-10-07 04:10:49.583 [info] > git rev-parse --show-toplevel [1ms]
+2023-10-07 04:10:49.586 [info] > git rev-parse --git-dir --git-common-dir [0ms]
+2023-10-07 04:10:49.591 [info] Open repository: /home/team32
+2023-10-07 04:10:49.595 [info] > git fetch [4ms]
+2023-10-07 04:10:49.595 [info] > git config --get commit.template [1ms]
+2023-10-07 04:10:49.600 [info] No remotes found in the git config file.
+2023-10-07 04:10:49.601 [info] > git config --get commit.template [3ms]
+2023-10-07 04:10:49.603 [info] No remotes found in the git config file.
+2023-10-07 04:10:49.603 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [3ms]
+2023-10-07 04:10:49.605 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:10:49.608 [info] > git config --get commit.template [1ms]
+2023-10-07 04:10:49.608 [info] No remotes found in the git config file.
+2023-10-07 04:10:49.610 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [0ms]
+2023-10-07 04:10:49.620 [info] > git status -z -uall [7ms]
+2023-10-07 04:10:50.179 [info] > git check-ignore -v -z --stdin [3ms]
+2023-10-07 04:10:50.180 [info] > git check-ignore -v -z --stdin [1ms]
+2023-10-07 04:10:50.932 [info] > git ls-files --stage -- /home/team32/pintos/src/devices/timer.c [0ms]
+2023-10-07 04:10:50.948 [info] > git show --textconv :pintos/src/devices/timer.c [1ms]
+2023-10-07 04:10:53.634 [info] > git config --get commit.template [3ms]
+2023-10-07 04:10:53.634 [info] No remotes found in the git config file.
+2023-10-07 04:10:53.634 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [0ms]
+2023-10-07 04:10:53.642 [info] > git status -z -uall [5ms]
+2023-10-07 04:10:58.674 [info] No remotes found in the git config file.
+2023-10-07 04:10:58.675 [info] > git config --get commit.template [4ms]
+2023-10-07 04:10:58.675 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:10:58.684 [info] > git status -z -uall [6ms]
+2023-10-07 04:11:03.709 [info] No remotes found in the git config file.
+2023-10-07 04:11:03.709 [info] > git config --get commit.template [4ms]
+2023-10-07 04:11:03.709 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:11:03.718 [info] > git status -z -uall [6ms]
+2023-10-07 04:11:08.745 [info] No remotes found in the git config file.
+2023-10-07 04:11:08.745 [info] > git config --get commit.template [4ms]
+2023-10-07 04:11:08.745 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [1ms]
+2023-10-07 04:11:08.753 [info] > git status -z -uall [5ms]
