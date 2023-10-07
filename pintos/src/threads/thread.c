@@ -591,6 +591,22 @@ allocate_tid (void)
    Used by switch.S, which can't figure it out on its own. */
 uint32_t thread_stack_ofs = offsetof (struct thread, stack);
 
+/* Compare threads' tick_wakeup to insert threads in sleep_list ordered. */
+bool
+thread_compare_tick_wakeup (const struct list_elem *s, const struct list_elem *t, void *aux UNUSED)
+{
+  return list_entry (s, struct thread, elem)->tick_wakeup < 
+         list_entry (t, struct thread, elem)->tick_wakeup;
+}
+
+/* Compare threads' priority to insert threads in ready_list. */
+bool
+thread_compare_priority (const struct list_elem *s, const struct list_elem *t, void *aux UNUSED)
+{
+  return list_entry (s, struct thread, elem)->priority >
+         list_entry (t, struct thread, elem)->priority;
+}
+
 /* Put thread in the sleep_list with TICK which refers tick_wakeup. */
 void
 thread_sleep (int64_t tick)
@@ -606,14 +622,6 @@ thread_sleep (int64_t tick)
   thread_block ();
 
   intr_set_level (old_level);
-}
-
-/* Compare threads' tick_wakeup to insert threads in sleep_list ordered. */
-bool
-thread_compare_tick_wakeup (struct list_elem *s, struct list_elem *t, void *aux UNUSED)
-{
-  return list_entry (s, struct thread, elem)->tick_wakeup < 
-         list_entry (t, struct thread, elem)->tick_wakeup;
 }
 
 /* Unblock thread when tick_wakeup. */
@@ -632,14 +640,6 @@ thread_wakeup (int64_t tick_cur)
     }
     else break;
   }
-}
-
-/* Compare threads' priority to insert threads in ready_list. */
-bool
-thread_compare_priority (struct list_elem *s, struct list_elem *t, void *aux UNUSED)
-{
-  return list_entry (s, struct thread, elem)->priority >
-         list_entry (t, struct thread, elem)->priority;
 }
 
 /* Compare two priority of running thread and the front thread in the ready_list. 

@@ -139,10 +139,10 @@ void thread_set_nice (int);
 int thread_get_recent_cpu (void);
 int thread_get_load_avg (void);
 
+bool thread_compare_tick_wakeup (const struct list_elem *s, const struct list_elem *t, void *aux);
+bool thread_compare_priority (const struct list_elem *s, const struct list_elem *t, void *aux);
 void thread_sleep (int64_t);
-bool thread_compare_tick_wakeup (struct list_elem *s, struct list_elem *t, void *aux);
 void thread_wakeup (int64_t);
-bool thread_compare_priority (struct list_elem *s, struct list_elem *t, void *aux UNUSED);
-void check_running_priority ();
+void check_running_priority (void);
 
 #endif /* threads/thread.h */
