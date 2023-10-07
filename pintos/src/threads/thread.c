@@ -28,6 +28,10 @@ static struct list ready_list;
    when they are first scheduled and removed when they exit. */
 static struct list all_list;
 
+/* List of sleeping processes. Processes are added to this list
+   when they are called by thread_sleep(). */
+static struct list sleep_list;
+
 /* Idle thread. */
 static struct thread *idle_thread;
 
@@ -92,6 +96,7 @@ thread_init (void)
   lock_init (&tid_lock);
   list_init (&ready_list);
   list_init (&all_list);
+  list_init (&sleep_list);
 
   /* Set up a thread structure for the running thread. */
   initial_thread = running_thread ();
@@ -582,3 +587,46 @@ allocate_tid (void)
 /* Offset of `stack' member within `struct thread'.
    Used by switch.S, which can't figure it out on its own. */
 uint32_t thread_stack_ofs = offsetof (struct thread, stack);
+
+/* Put thread in the sleep_list with TICK which refers tick_wakeup. */
+void
+thread_sleep (int64_t tick)
+{
+  struct thread *cur = thread_current ();
+  enum intr_level old_level;
+
+  ASSERT (cur != idle_thread);  // Don't put idle thread in sleep_list
+
+  old_level = intr_disable ();
+  cur->tick_wakeup = tick;
+  list_insert_ordered (&sleep_list, &cur->elem, thread_compare_tick_wakeup, NULL);
+  thread_block ();
+
+  intr_set_level (old_level);
+}
+
+/* Compare threads' tick_wakeup to insert threads in sleep_list ordered. */
+void
+thread_compare_tick_wakeup (struct list_elem *s, struct list_elem *t, void *aux UNUSED)
+{
+  return list_entry (s, struct thread, elem)->tick_wakeup < 
+         list_entry (t, struct thread, elem)->tick_wakeup;
+}
+
+/* Unblock thread when tick_wakeup. */
+void
+thread_wakeup (int64_t tick_cur)
+{
+  struct list_elem *s = list_begin (&sleep_list);
+  while (s != list_end (&sleep_list))
+  {
+    struct thread *cur = list_entry (s, struct thread, elem);
+
+    if (cur->tick_wakeup <= tick_cur)
+    {
+      s = list_remove (s);
+      thread_unblock (cur);
+    }
+    else break;
+  }
+}
