@@ -206,6 +206,8 @@ thread_create (const char *name, int priority,
   /* Add to run queue. */
   thread_unblock (t);
 
+  check_running_priority ();
+
   return tid;
 }
 
@@ -242,7 +244,7 @@ thread_unblock (struct thread *t)
 
   old_level = intr_disable ();
   ASSERT (t->status == THREAD_BLOCKED);
-  list_push_back (&ready_list, &t->elem);
+  list_insert_ordered (&ready_list, &t->elem, thread_compare_priority, NULL);
   t->status = THREAD_READY;
   intr_set_level (old_level);
 }
@@ -313,7 +315,7 @@ thread_yield (void)
 
   old_level = intr_disable ();
   if (cur != idle_thread) 
-    list_push_back (&ready_list, &cur->elem);
+    list_insert_ordered (&ready_list, &cur->elem, thread_compare_priority, NULL);
   cur->status = THREAD_READY;
   schedule ();
   intr_set_level (old_level);
@@ -341,6 +343,7 @@ void
 thread_set_priority (int new_priority) 
 {
   thread_current ()->priority = new_priority;
+  check_running_priority ();
 }
 
 /* Returns the current thread's priority. */
@@ -606,7 +609,7 @@ thread_sleep (int64_t tick)
 }
 
 /* Compare threads' tick_wakeup to insert threads in sleep_list ordered. */
-void
+bool
 thread_compare_tick_wakeup (struct list_elem *s, struct list_elem *t, void *aux UNUSED)
 {
   return list_entry (s, struct thread, elem)->tick_wakeup < 
@@ -629,4 +632,22 @@ thread_wakeup (int64_t tick_cur)
     }
     else break;
   }
+}
+
+/* Compare threads' priority to insert threads in ready_list. */
+bool
+thread_compare_priority (struct list_elem *s, struct list_elem *t, void *aux UNUSED)
+{
+  return list_entry (s, struct thread, elem)->priority >
+         list_entry (t, struct thread, elem)->priority;
+}
+
+/* Compare two priority of running thread and the front thread in the ready_list. 
+   If running thread has lower priority, call thread_yield. */
+void
+check_running_priority ()
+{
+  if (list_empty (&ready_list)) return;
+  if (thread_current ()->priority < list_entry (list_front (&ready_list), struct thread, elem)->priority)
+    thread_yield ();
 }
