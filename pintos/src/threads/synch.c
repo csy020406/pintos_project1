@@ -73,6 +73,8 @@ sema_down (struct semaphore *sema)
     }
   sema->value--;
   intr_set_level (old_level);
+
+  printf("sema_down\n");
 }
 
 /* Down or "P" operation on a semaphore, but only if the
