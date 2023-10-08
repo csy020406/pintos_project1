@@ -94,6 +94,11 @@ struct thread
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
 
+    int real_priority;                  /* Real priority befor donated. */
+    struct lock *waiting_lock;          /* Lock the thread is waiting for it to be released. */
+    struct list donation_list;          /* List of (other) threads donate to the thread. */
+    struct list_elem donation_elem;     /* List element for donation_list. */
+
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
@@ -141,6 +146,8 @@ int thread_get_load_avg (void);
 
 bool thread_compare_tick_wakeup (const struct list_elem *s, const struct list_elem *t, void *aux);
 bool thread_compare_priority (const struct list_elem *s, const struct list_elem *t, void *aux);
+bool thread_compare_donation_priority (const struct list_elem *s, const struct list_elem *t, void *aux);
+
 void thread_sleep (int64_t);
 void thread_wakeup (int64_t);
 void check_running_priority (void);

@@ -43,6 +43,9 @@ void cond_broadcast (struct condition *, struct lock *);
 
 /* new implementation */
 bool cond_compare_priority (const struct list_elem *s, const struct list_elem *t, void *aux);
+void donate_priority (void);
+void donation_list_remove (struct lock *);
+void update_priority (void);
 
 /* Optimization barrier.
 

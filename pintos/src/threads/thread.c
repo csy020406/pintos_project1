@@ -343,6 +343,7 @@ void
 thread_set_priority (int new_priority) 
 {
   thread_current ()->priority = new_priority;
+  update_priority ();
   check_running_priority ();
 }
 
@@ -471,6 +472,10 @@ init_thread (struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
   t->magic = THREAD_MAGIC;
+
+  t->real_priority = priority;
+  t->waiting_lock = NULL;
+  list_init (&t->donation_list);
 
   old_level = intr_disable ();
   list_push_back (&all_list, &t->allelem);
@@ -605,6 +610,14 @@ thread_compare_priority (const struct list_elem *s, const struct list_elem *t, v
 {
   return list_entry (s, struct thread, elem)->priority >
          list_entry (t, struct thread, elem)->priority;
+}
+
+/* Compare threads' priority to insert threas in donation_list. */
+bool
+thread_compare_donation_priority (const struct list_elem *s, const struct list_elem *t, void *aux UNUSED)
+{
+  return list_entry (s, struct thread, donation_elem)->priority >
+         list_entry (t, struct thread, donation_elem)->priority;
 }
 
 /* Put thread in the sleep_list with TICK which refers tick_wakeup. */

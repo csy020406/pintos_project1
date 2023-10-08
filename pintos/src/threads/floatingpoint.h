@@ -54,3 +54,15 @@ int div_both (int f, int n) {
     int nice;
     int current_cpu;
 // }
+
+//init_thread {
+    t->nice = 0;
+    t->cur_cpu = 0;
+
+//}
+
+
+//여기부터 thread.c에 추가할 것
+
+//thread_start {
+    load_avg = 0; //전역변수
