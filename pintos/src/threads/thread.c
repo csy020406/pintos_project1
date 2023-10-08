@@ -343,6 +343,8 @@ void
 thread_set_priority (int new_priority) 
 {
   thread_current ()->priority = new_priority;
+  thread_current ()->real_priority = new_priority;
+
   update_priority ();
   check_running_priority ();
 }
