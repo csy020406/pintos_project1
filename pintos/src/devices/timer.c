@@ -171,6 +171,19 @@ timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
   thread_tick ();
+  
+  /* New Implementation for advanced scheduling */
+  if (thread_mlfqs) {
+    advanced_add_recent_cpu();  //per 1 ticks
+    if (!(ticks % 4)) {
+      advanced_recalc_priority();  //per 4 ticks
+      if (!(ticks % TIMER_FREQ)) {  //per 1 s
+        advanced_calc_load_avg();
+        advanced_recalc_recsent_cpu();
+      }
+    }
+  }
+
   thread_wakeup (ticks);
 }
 

@@ -1,4 +1,6 @@
 /* new implementation */
+#include <stdint.h>
+
 #define FP (1<<14)              //fixed point 1
 #define INT_MAX ((1<<31)-1)     //0 111...1
 #define INT_MIN (-(1<<31))      //1 000...0
@@ -33,11 +35,11 @@ int div_fp (int f1, int f2) {
 }
 
 int add_both (int f, int n) {
-    return f + F*n;
+    return f + FP*n;
 }
 
 int sub_both (int f, int n) {
-    return f - F*n;
+    return f - FP*n;
 }
 
 int mult_both (int f, int n) {
@@ -47,22 +49,3 @@ int mult_both (int f, int n) {
 int div_both (int f, int n) {
     return f/n;
 }
-
-//이따가 thread.h에 추가할 것 (advanced schedular)
-
-//struct thread {
-    int nice;
-    int current_cpu;
-// }
-
-//init_thread {
-    t->nice = 0;
-    t->cur_cpu = 0;
-
-//}
-
-
-//여기부터 thread.c에 추가할 것
-
-//thread_start {
-    load_avg = 0; //전역변수

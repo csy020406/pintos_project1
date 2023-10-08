@@ -11,6 +11,7 @@
 #include "threads/switch.h"
 #include "threads/synch.h"
 #include "threads/vaddr.h"
+#include "threads/floatingpoint.h" /* New Implementation */
 #ifdef USERPROG
 #include "userprog/process.h"
 #endif
@@ -62,6 +63,9 @@ static unsigned thread_ticks;   /* # of timer ticks since last yield. */
    If true, use multi-level feedback queue scheduler.
    Controlled by kernel command-line option "-o mlfqs". */
 bool thread_mlfqs;
+
+/* New Implementation */
+int load_avg = 0;
 
 static void kernel_thread (thread_func *, void *aux);
 
@@ -120,6 +124,9 @@ thread_start (void)
 
   /* Wait for the idle thread to initialize idle_thread. */
   sema_down (&idle_started);
+
+  /* New Implementation */
+  load_avg = 0;
 }
 
 /* Called by the timer interrupt handler at each timer tick.
@@ -342,6 +349,8 @@ thread_foreach (thread_action_func *func, void *aux)
 void
 thread_set_priority (int new_priority) 
 {
+  if (thread_mlfqs) return; /* New implementation */
+  
   thread_current ()->priority = new_priority;
   thread_current ()->real_priority = new_priority;
 
@@ -360,31 +369,44 @@ thread_get_priority (void)
 void
 thread_set_nice (int nice UNUSED) 
 {
-  /* Not yet implemented. */
+  /* Not yet implemented. */  /* New Implementation */
+  enum intr_level old_level = intr_disable();
+  thread_current()->nice = nice;
+  advanced_calc_priority(thread_current());
+  intr_set_level(old_level);
 }
 
 /* Returns the current thread's nice value. */
 int
 thread_get_nice (void) 
 {
-  /* Not yet implemented. */
-  return 0;
+  /* Not yet implemented. */  /* New Implementation */
+  enum intr_level old_level = intr_disable();
+  int nice = thread_current()->nice;
+  intr_set_level(old_level);
+  return nice;
 }
 
 /* Returns 100 times the system load average. */
 int
 thread_get_load_avg (void) 
 {
-  /* Not yet implemented. */
-  return 0;
+  /* Not yet implemented. */  /* New Implementation */
+  enum intr_level old_level = intr_disable();
+  int load_avg_t = fp_to_i_round (mult_both (load_avg, 100)); //not to use global variable load_avg
+  intr_set_level(old_level);
+  return load_avg_t;
 }
 
 /* Returns 100 times the current thread's recent_cpu value. */
 int
 thread_get_recent_cpu (void) 
 {
-  /* Not yet implemented. */
-  return 0;
+  /* Not yet implemented. */  /* New Implementation */
+  enum intr_level old_level = intr_disable();
+  int recent_cpu = fp_to_i_round (mult_both (thread_current()->recent_cpu, 100));
+  intr_set_level(old_level);
+  return recent_cpu;
 }
 
 /* Idle thread.  Executes when no other thread is ready to run.
@@ -482,6 +504,10 @@ init_thread (struct thread *t, const char *name, int priority)
   old_level = intr_disable ();
   list_push_back (&all_list, &t->allelem);
   intr_set_level (old_level);
+
+  /* New Implementation */
+  t->nice = 0;
+  t->recent_cpu = 0;
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and
@@ -665,4 +691,54 @@ check_running_priority ()
   if (list_empty (&ready_list)) return;
   if (thread_current ()->priority < list_entry (list_front (&ready_list), struct thread, elem)->priority)
     thread_yield ();
+}
+
+/* New Implementation */
+void
+advanced_calc_priority (struct thread *t)
+{
+  if (t != idle_thread)
+    t->priority = add_both (div_both (t->recent_cpu, 4), PRI_MAX - t->nice*2);
+}
+
+void
+advanced_calc_priority_recent_cpu (struct thread *t)
+{
+  if (t != idle_thread)
+    t->recent_cpu = add_both (mult_fp (div_fp (mult_both (load_avg, 2), add_both (mult_both (load_avg, 2), 1)), t->recent_cpu), t->nice);
+}
+
+void
+advanced_calc_load_avg (void) //per 1 s
+{
+  int ready = list_size (&ready_list);
+  if (thread_current() != idle_thread)
+    ready += 1;
+  load_avg = add_both (mult_both(load_avg, div_fp(i_to_fp(59), i_to_fp(60))), ready/60);
+}
+
+void
+advanced_add_recent_cpu (void) //per 1 ticks
+{
+  if (thread_current() != idle_thread)
+    thread_current()->recent_cpu = add_both (thread_current()->recent_cpu, 1);
+}
+
+void
+advanced_recalc_recent_cpu (void) //per 1 s
+{
+  struct list_elem *cur = list_begin(&all_list);
+  for (; cur != list_end(&all_list); cur = list_next(cur)) {
+    struct thread *t = list_entry (cur, struct thread, allelem);
+    advanced_calc_recent_cpu (t);
+  }
+}
+
+void
+advanced_recalc_priority (void) //per 4 ticks
+{
+  struct list_elem *cur = list_begin(&all_list);
+  for (; cur != list_end(&all_list); cur = list_next(cur)) {
+    struct thread *t = list_entry (cur, struct thread, allelem);
+    advanced_calc_priority (t);
 }

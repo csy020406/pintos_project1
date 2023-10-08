@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "process.h": "c",
+        "floatingpoint.h": "c",
+        "intr-stubs.h": "c"
+    }
+}
