@@ -68,13 +68,13 @@ sema_down (struct semaphore *sema)
   old_level = intr_disable ();
   while (sema->value == 0) 
     {
-      list_insert_ordered (&sema->waiters, &thread_current ()->elem, thread_compare_priority, NULL);
+      list_insert_ordered (&sema->waiters, &thread_current ()->elem, thread_compare_priority, NULL);  // instead of list_push_back
       thread_block ();
     }
   sema->value--;
   intr_set_level (old_level);
 
-  printf("sema_down\n");  //debug
+  // printf("sema_down\n");  //debug
 }
 
 /* Down or "P" operation on a semaphore, but only if the
@@ -213,7 +213,7 @@ lock_acquire (struct lock *lock)
 
   sema_down (&lock->semaphore);
   cur->waiting_lock = NULL;
-  lock->holder = thread_current (); //
+  lock->holder = cur;
 }
 
 /* Tries to acquires LOCK and returns true if successful or false
@@ -314,7 +314,7 @@ cond_wait (struct condition *cond, struct lock *lock)
   ASSERT (lock_held_by_current_thread (lock));
   
   sema_init (&waiter.semaphore, 0);
-  list_insert_ordered (&cond->waiters, &waiter.elem, cond_compare_priority, NULL);
+  list_insert_ordered (&cond->waiters, &waiter.elem, cond_compare_priority, NULL);  // instead of list_push_back
   lock_release (lock);
   sema_down (&waiter.semaphore);
   lock_acquire (lock);
