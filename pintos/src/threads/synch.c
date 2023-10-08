@@ -74,7 +74,7 @@ sema_down (struct semaphore *sema)
   sema->value--;
   intr_set_level (old_level);
 
-  printf("sema_down\n");
+  printf("sema_down\n");  //debug
 }
 
 /* Down or "P" operation on a semaphore, but only if the
@@ -115,9 +115,12 @@ sema_up (struct semaphore *sema)
   ASSERT (sema != NULL);
 
   old_level = intr_disable ();
-  if (!list_empty (&sema->waiters)) 
+  if (!list_empty (&sema->waiters))
+  {
+    list_sort (&sema->waiters, thread_compare_priority, NULL);
     thread_unblock (list_entry (list_pop_front (&sema->waiters),
                                 struct thread, elem));
+  }
   sema->value++;
   check_running_priority ();
 
