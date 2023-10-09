@@ -702,7 +702,7 @@ advanced_calc_priority (struct thread *t)
 }
 
 void
-advanced_calc_priority_recent_cpu (struct thread *t)
+advanced_calc_recent_cpu (struct thread *t)
 {
   if (t != idle_thread)
     t->recent_cpu = add_both (mult_fp (div_fp (mult_both (load_avg, 2), add_both (mult_both (load_avg, 2), 1)), t->recent_cpu), t->nice);
