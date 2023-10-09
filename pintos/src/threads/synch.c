@@ -246,10 +246,10 @@ lock_try_acquire (struct lock *lock)
 void
 lock_release (struct lock *lock) 
 {
-  if (!thread_mlfqs) {
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
 
+  if (!thread_mlfqs) {
   donation_list_remove (lock);
   update_priority ();
   }
