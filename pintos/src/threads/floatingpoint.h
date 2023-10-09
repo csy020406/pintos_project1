@@ -5,7 +5,7 @@
 #define INT_MIN (-(1<<31))      //1 000...0
 
 int i_to_fp (int n) {
-    return n/FP;
+    return n*FP;
 }
 
 int fp_to_i (int f) {
