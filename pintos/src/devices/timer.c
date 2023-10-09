@@ -178,8 +178,8 @@ timer_interrupt (struct intr_frame *args UNUSED)
     if (!(ticks % 4)) {
       advanced_recalc_priority();  //per 4 ticks
       if (!(ticks % TIMER_FREQ)) {  //per 1 s
-        advanced_calc_load_avg();
         advanced_recalc_recent_cpu();
+        advanced_calc_load_avg();
       }
     }
   }
