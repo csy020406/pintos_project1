@@ -1,5 +1,4 @@
 #include "threads/thread.h"
-#include "threads/floatingpoint.h"
 #include <debug.h>
 #include <stddef.h>
 #include <random.h>
@@ -12,6 +11,7 @@
 #include "threads/switch.h"
 #include "threads/synch.h"
 #include "threads/vaddr.h"
+#include "threads/floatingpoint.h"
 #ifdef USERPROG
 #include "userprog/process.h"
 #endif
