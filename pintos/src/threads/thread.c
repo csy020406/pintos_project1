@@ -11,7 +11,6 @@
 #include "threads/switch.h"
 #include "threads/synch.h"
 #include "threads/vaddr.h"
-#include "threads/floatingpoint.h" /* New Implementation */
 #ifdef USERPROG
 #include "userprog/process.h"
 #endif
@@ -362,18 +361,22 @@ thread_set_priority (int new_priority)
 int
 thread_get_priority (void) 
 {
-  return thread_current ()->priority;
+//  return thread_current ()->priority;
+  enum intr_level old_level = intr_disable();
+  int pri = thread_current()->priority;
+  intr_set_level(old_level);
+  return pri; /* new 2*/
 }
 
 /* Sets the current thread's nice value to NICE. */
 void
-thread_set_nice (int nice UNUSED) 
+thread_set_nice (int nice) 
 {
   /* Not yet implemented. */  /* New Implementation */
   enum intr_level old_level = intr_disable();
   thread_current()->nice = nice;
   advanced_calc_priority(thread_current());
-  intr_set_level(old_level);
+  intr_set_level(old_level); /* new2 - delete?*/
 }
 
 /* Returns the current thread's nice value. */

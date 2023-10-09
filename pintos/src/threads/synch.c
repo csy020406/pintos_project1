@@ -200,18 +200,13 @@ lock_init (struct lock *lock)
 void
 lock_acquire (struct lock *lock)
 {
-  if (thread_mlfqs) { /* New Implementation*/
-    sema_down (&lock->semaphore);
-    lock->holder = thread_current();
-    return;
-  }
 
   ASSERT (lock != NULL);
   ASSERT (!intr_context ());
   ASSERT (!lock_held_by_current_thread (lock));
 
   struct thread *cur = thread_current ();
-  if (lock->holder)
+/*if (lock->holder)
   {
     cur->waiting_lock = lock;
     list_insert_ordered (&lock->holder->donation_list, &cur->donation_elem, thread_compare_donation_priority, NULL);
@@ -221,6 +216,18 @@ lock_acquire (struct lock *lock)
   sema_down (&lock->semaphore);
   cur->waiting_lock = NULL;
   lock->holder = cur;
+  */
+  
+  if(!thread_mlfqs && lock->holder)
+  {
+    cur->waiting_lock = lock;
+    donate_priority();
+  }
+  
+  sema_down (&lock->semaphore);
+  cur->waiting_lock = NULL;
+  if(!thread_mlfqs) list_insert_ordered (&lock->holder->donation_list, &cur->donation_elem, thread_compare_donation_priority, NULL);
+  lock->holder = cur; /* new2 */
 }
 
 /* Tries to acquires LOCK and returns true if successful or false
@@ -258,10 +265,12 @@ lock_release (struct lock *lock)
   update_priority ();
 
   lock->holder = NULL; /* New Implementation*/
-  if (thread_mlfqs) {
-    sema_up (&lock->semaphore);
-    return;
-  } 
+  if (!thread_mlfqs) {
+    list_remove(&lock->holder->elem);
+    update_priority();
+  }  /* new2 */
+  
+  sema_up (&lock->semaphore);
   
   /*lock->holder = NULL;
   sema_up (&lock->semaphore); */
