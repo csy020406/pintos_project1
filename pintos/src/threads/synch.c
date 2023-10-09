@@ -246,22 +246,16 @@ lock_try_acquire (struct lock *lock)
 void
 lock_release (struct lock *lock) 
 {
+  if (!thread_mlfqs) {
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
 
   donation_list_remove (lock);
   update_priority ();
+  }
 
-  lock->holder = NULL; /* New Implementation*/
-  if (!thread_mlfqs) {
-    list_remove(&lock->holder->elem);
-    update_priority();
-  }  /* new2 */
-  
+  lock->holder = NULL;
   sema_up (&lock->semaphore);
-  
-  /*lock->holder = NULL;
-  sema_up (&lock->semaphore); */
 }
 
 /* Returns true if the current thread holds LOCK, false
