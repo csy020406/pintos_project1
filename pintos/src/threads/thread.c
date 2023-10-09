@@ -718,7 +718,7 @@ advanced_calc_load_avg (void) //per 1 s
   int ready = list_size (&ready_list);
   if (thread_current() != idle_thread)
     ready += 1;
-  load_avg = add_both (mult_both(load_avg, div_fp(i_to_fp(59), i_to_fp(60))), ready/60);
+  load_avg = add_fp (mult_fp (load_avg, div_fp(i_to_fp(59), i_to_fp(60))), mult_both (ready, div_fp (i_to_fp(1), i_to_fp(60))));
 }
 
 void
