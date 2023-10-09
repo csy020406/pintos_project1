@@ -158,7 +158,7 @@ void check_running_priority (void);
 
 /* New Implementation */
 void advanced_calc_priority (struct thread *t);
-void advanced_calc_priority_recent_cpu (struct thread *t);
+void advanced_calc_recent_cpu (struct thread *t);
 void advanced_calc_load_avg (void);
 void advanced_add_recent_cpu (void);
 void advanced_recalc_recent_cpu (void);
