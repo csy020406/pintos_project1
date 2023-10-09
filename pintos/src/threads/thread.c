@@ -741,4 +741,5 @@ advanced_recalc_priority (void) //per 4 ticks
   for (; cur != list_end(&all_list); cur = list_next(cur)) {
     struct thread *t = list_entry (cur, struct thread, allelem);
     advanced_calc_priority (t);
+  }
 }
