@@ -1,4 +1,5 @@
 #include "threads/thread.h"
+#include "threads/floatingpoint.h"
 #include <debug.h>
 #include <stddef.h>
 #include <random.h>
@@ -361,11 +362,11 @@ thread_set_priority (int new_priority)
 int
 thread_get_priority (void) 
 {
-//  return thread_current ()->priority;
-  enum intr_level old_level = intr_disable();
+  return thread_current ()->priority;
+/*  enum intr_level old_level = intr_disable();
   int pri = thread_current()->priority;
   intr_set_level(old_level);
-  return pri; /* new 2*/
+  return pri; new 2*/
 }
 
 /* Sets the current thread's nice value to NICE. */
@@ -376,7 +377,7 @@ thread_set_nice (int nice)
   enum intr_level old_level = intr_disable();
   thread_current()->nice = nice;
   advanced_calc_priority(thread_current());
-  intr_set_level(old_level); /* new2 - delete?*/
+  intr_set_level(old_level);
 }
 
 /* Returns the current thread's nice value. */
@@ -701,7 +702,7 @@ void
 advanced_calc_priority (struct thread *t)
 {
   if (t != idle_thread)
-    t->priority = add_both (div_both (t->recent_cpu, 4), PRI_MAX - t->nice*2);
+    t->priority = fp_to_i (add_both (div_both (t->recent_cpu, -4), PRI_MAX - t->nice*2));
 }
 
 void
