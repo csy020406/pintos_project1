@@ -68,7 +68,7 @@ sema_down (struct semaphore *sema)
   old_level = intr_disable ();
   while (sema->value == 0) 
     {
-      if (!thread_mlfqs) donate_priority ();  // debug3
+      // if (!thread_mlfqs) donate_priority ();  // debug3
       list_insert_ordered (&sema->waiters, &thread_current ()->elem, thread_compare_priority, NULL);  // instead of list_push_back
       thread_block ();
     }
